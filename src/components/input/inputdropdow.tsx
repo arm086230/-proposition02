@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 interface Country {
   name: string;
 }
 
 interface PropsDropdow {
-  type: string;
+  type: any;
   placeholder?: string;
   value: string;
   disabled?: boolean;
+  arrow?: boolean;
   size?: "small" | "medium" | "large";
 }
 
@@ -28,11 +30,17 @@ export default function Dropdow(props: PropsDropdow) {
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v2/all?fields=name")
-      .then((res) => res.json())
-      .then((data: Country[]) => {
-        setCountries(data);
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://restcountries.com/v2/all?fields=name"
+        );
+        setCountries(response.data);
+      } catch (e) {
+        console.error("Error fetching", e);
+      }
+    };
+    fetchData();
   }, []);
 
   return (

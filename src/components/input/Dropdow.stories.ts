@@ -12,7 +12,7 @@ const meta = {
       tags: ["autodocs"],
     
       argTypes: {
-        backgroundColor: { control: "color" },
+        backgroundColor: { control: 'color' },
       },
     };
     
@@ -26,6 +26,7 @@ const meta = {
         value: "",
         disabled: false,
         size: "small",
+        arrow: false,
       },
     };
     
@@ -36,6 +37,7 @@ const meta = {
         value: "Disabled Input",
         disabled: true,
         size: "medium",
+        arrow: true,
       },
     };
     

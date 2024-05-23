@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Input from "../components/input/inputtest";
 import Autoserarch from "../components/input/autoserarch";
 import Inputdropdow from "@/components/input/inputdropdow";
+import DatePicker from "../components/input/datePicker"
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -15,17 +16,13 @@ function App() {
   //     console.log('Mouse down event:', event);
   // };
 
+  const handleC  = (date: Date | null) => {
+    console.log("Select Date",date)
+  }
+
   return (
     <div>
-      {/* <Input
-                disabled = {false}
-                type="text"
-                placeholder="Enter text"
-                value={inputValue}
-                size="large"
-                label="My Input"
-                onChange={handleChange}
-            /> */}
+
       <Autoserarch
         disabled={false}
         type="text"
@@ -40,8 +37,17 @@ function App() {
         type="text"
         value=""
         placeholder="Enter text"
-        size="medium"
       />
+
+      <DatePicker 
+      dateFormat="mm-dd-yyyy"
+      selectedDate ={null}
+      placeholderText=""
+      disabled={false}
+      size="medium"
+      onChange={handleC}
+      />
+
     </div>
   );
 }
